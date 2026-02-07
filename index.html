@@ -5,209 +5,969 @@
   <title>Ibgwe Industries | Solar & Engineering Solutions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Ibgwe Industries provides solar installations, custom machine design, Arduino and PLC automation solutions across Zimbabwe.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #0066cc;
+      --secondary: #00a8ff;
+      --accent: #ff9800;
+      --dark: #1a2b4d;
+      --light: #f8fafc;
+      --gray: #6b7280;
+      --success: #10b981;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --radius: 12px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Poppins', sans-serif;
       line-height: 1.6;
-      color: #222;
-      background: #ffffff;
+      color: #333;
+      background-color: var(--light);
+      overflow-x: hidden;
     }
 
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header & Navigation */
     header {
-      background: #0a7d3b;
-      color: #fff;
-      padding: 20px;
+      background-color: var(--dark);
+      color: white;
+      padding: 1.2rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
-    header h1 {
-      margin: 0;
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      color: var(--secondary);
+      font-size: 1.8rem;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      background: linear-gradient(to right, var(--secondary), var(--primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     nav {
-      margin-top: 10px;
+      display: flex;
+      align-items: center;
     }
 
-    nav a {
-      color: #fff;
-      margin-right: 15px;
-      text-decoration: none;
-      font-weight: bold;
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
     }
 
-    section {
-      padding: 50px 20px;
-      max-width: 1100px;
-      margin: auto;
+    .nav-links a {
+      font-weight: 500;
+      transition: var(--transition);
+      padding: 0.5rem 0;
+      position: relative;
     }
 
-    h2 {
-      color: #0a7d3b;
-      margin-bottom: 20px;
+    .nav-links a:hover {
+      color: var(--secondary);
     }
 
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--secondary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
     .hero {
-      background: #f4fdf7;
+      background: linear-gradient(rgba(0, 40, 85, 0.85), rgba(0, 40, 85, 0.9)), url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
       text-align: center;
-      padding: 70px 20px;
+      padding: 6rem 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      animation: fadeInUp 1s ease;
     }
 
     .hero h2 {
-      font-size: 2.4em;
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: white;
     }
 
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.9;
+    }
+
+    /* Buttons */
     .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0, 102, 204, 0.2);
+    }
+
+    .btn-accent {
+      background: linear-gradient(to right, var(--accent), #ffb74d);
+    }
+
+    .btn-accent:hover {
+      box-shadow: 0 15px 30px rgba(255, 152, 0, 0.2);
+    }
+
+    /* Sections */
+    section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      position: relative;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--dark);
       display: inline-block;
-      background: #0a7d3b;
-      color: #fff;
-      padding: 12px 22px;
-      text-decoration: none;
-      border-radius: 5px;
-      margin-top: 15px;
+      margin-bottom: 1rem;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+
+    /* About Section */
+    #about {
+      background-color: white;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      margin-bottom: 1.5rem;
+      color: var(--gray);
+    }
+
+    .about-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .highlight-icon {
+      background-color: rgba(0, 102, 204, 0.1);
+      color: var(--primary);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-image {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Services Section */
+    #services {
+      background-color: #f0f7ff;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
     }
 
     .card {
-      border: 1px solid #ddd;
-      padding: 20px;
-      border-radius: 8px;
-      background: #fff;
+      background-color: white;
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border-top: 4px solid transparent;
     }
 
-    footer {
-      background: #222;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
+    .card:hover {
+      transform: translateY(-10px);
+      border-top-color: var(--secondary);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+
+    .card p {
+      color: var(--gray);
+    }
+
+    /* Products Section */
+    #products {
+      background-color: white;
+    }
+
+    .product-card {
+      background-color: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .product-image {
+      height: 200px;
+      background-color: #f0f7ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 3rem;
+    }
+
+    .product-content {
+      padding: 1.5rem;
+    }
+
+    .product-price {
+      color: var(--accent);
+      font-weight: 700;
+      margin-top: 1rem;
+    }
+
+    /* Contact Section */
+    #contact {
+      background-color: #f0f7ff;
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-icon {
+      background-color: var(--primary);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
     }
 
     .contact-box {
-      background: #f4fdf7;
-      padding: 25px;
-      border-radius: 8px;
+      background: linear-gradient(135deg, var(--dark), var(--primary));
+      color: white;
+      padding: 2.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box h3 {
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+
+    .contact-box p {
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 3rem 0 1.5rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, var(--secondary), white);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .footer-links h3, .footer-contact h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-links h3::after, .footer-contact h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--secondary);
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      transition: var(--transition);
+      opacity: 0.8;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+      color: var(--secondary);
+      padding-left: 5px;
+    }
+
+    .footer-contact p {
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0.9;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .social-icon:hover {
+      background-color: var(--secondary);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .hero h2 {
+        font-size: 2.5rem;
+      }
+      
+      .about-content, .contact-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .about-image {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--dark);
+        flex-direction: column;
+        padding: 1rem 0;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+      
+      .nav-links.active {
+        display: flex;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .hero h2 {
+        font-size: 2rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      
+      section {
+        padding: 3rem 0;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero {
+        padding: 4rem 1rem;
+      }
+      
+      .btn {
+        padding: 0.8rem 1.5rem;
+      }
     }
   </style>
 </head>
 
 <body>
-
-<header>
-  <h1>Ibgwe Industries</h1>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#products">Products</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<section class="hero" id="home">
-  <h2>Solar & Engineering Solutions You Can Trust</h2>
-  <p>We deliver reliable solar energy systems, automation, and custom engineering solutions across Zimbabwe.</p>
-  <a class="btn" href="tel:0772745518">Call Now: 0772745518</a>
-</section>
-
-<section id="about">
-  <h2>About Us</h2>
-  <p>
-    Ibgwe Industries is a Zimbabwean engineering company specializing in solar installations,
-    automation, and control systems. We combine practical engineering skills with modern technology
-    to deliver efficient, reliable, and cost-effective solutions.
-  </p>
-  <p>
-    We are fully mobile and serve clients nationwide.
-    <br><strong>Current base:</strong> Mvuma, Zimbabwe
-  </p>
-</section>
-
-<section id="services">
-  <h2>Our Services</h2>
-  <div class="grid">
-
-    <div class="card">
-      <h3>Solar System Installation</h3>
-      <p>Design and installation of solar power systems for homes, farms, and businesses.</p>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <div class="logo-icon">
+          <i class="fas fa-solar-panel"></i>
+        </div>
+        <h1>Ibgwe Industries</h1>
+      </div>
+      
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+          <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
+          <li><a href="#products"><i class="fas fa-shopping-cart"></i> Products</a></li>
+          <li><a href="#contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <div class="card">
-      <h3>Inverters & Battery Systems</h3>
-      <p>Supply and installation of hybrid inverters, lithium and gel battery systems.</p>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <h2>Solar & Engineering Solutions You Can Trust</h2>
+        <p>We deliver reliable solar energy systems, automation, and custom engineering solutions across Zimbabwe.</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a class="btn" href="tel:0772745518">
+            <i class="fas fa-phone-alt"></i> Call Now: 0772745518
+          </a>
+          <a class="btn btn-accent" href="#contact">
+            <i class="fas fa-envelope"></i> Get a Quote
+          </a>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="card">
-      <h3>Solar Maintenance & Repairs</h3>
-      <p>System upgrades, fault diagnosis, repairs, and routine maintenance.</p>
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>About Us</h2>
+      </div>
+      
+      <div class="about-content">
+        <div class="about-text">
+          <p>Ibgwe Industries is a Zimbabwean engineering company specializing in solar installations, automation, and control systems. We combine practical engineering skills with modern technology to deliver efficient, reliable, and cost-effective solutions.</p>
+          <p>We are fully mobile and serve clients nationwide.</p>
+          
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <strong>Current Base:</strong> Mvuma, Zimbabwe
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <i class="fas fa-certificate"></i>
+              </div>
+              <div>
+                <strong>Experience:</strong> 10+ Years in Engineering
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <i class="fas fa-tools"></i>
+              </div>
+              <div>
+                <strong>Services:</strong> Nationwide Coverage
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80" alt="Engineering Solutions">
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="card">
-      <h3>Custom Machine Design</h3>
-      <p>Design and fabrication of custom machines for industrial and agricultural applications.</p>
+  <!-- Services Section -->
+  <section id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Services</h2>
+      </div>
+      
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">
+            <i class="fas fa-sun"></i>
+          </div>
+          <h3>Solar System Installation</h3>
+          <p>Design and installation of solar power systems for homes, farms, and businesses.</p>
+        </div>
+        
+        <div class="card">
+          <div class="card-icon">
+            <i class="fas fa-battery-full"></i>
+          </div>
+          <h3>Inverters & Battery Systems</h3>
+          <p>Supply and installation of hybrid inverters, lithium and gel battery systems.</p>
+        </div>
+        
+        <div class="card">
+          <div class="card-icon">
+            <i class="fas fa-tools"></i>
+          </div>
+          <h3>Solar Maintenance & Repairs</h3>
+          <p>System upgrades, fault diagnosis, repairs, and routine maintenance.</p>
+        </div>
+        
+        <div class="card">
+          <div class="card-icon">
+            <i class="fas fa-industry"></i>
+          </div>
+          <h3>Custom Machine Design</h3>
+          <p>Design and fabrication of custom machines for industrial and agricultural applications.</p>
+        </div>
+        
+        <div class="card">
+          <div class="card-icon">
+            <i class="fas fa-microchip"></i>
+          </div>
+          <h3>Arduino & Embedded Systems</h3>
+          <p>Arduino programming, sensors, automation, IoT projects, and embedded control solutions.</p>
+        </div>
+        
+        <div class="card">
+          <div class="card-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <h3>PLC Installation & Programming</h3>
+          <p>PLC wiring, installation, programming, commissioning, and troubleshooting.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="card">
-      <h3>Arduino & Embedded Systems</h3>
-      <p>Arduino programming, sensors, automation, IoT projects, and embedded control solutions.</p>
+  <!-- Products Section -->
+  <section id="products">
+    <div class="container">
+      <div class="section-title">
+        <h2>Product Catalog</h2>
+      </div>
+      
+      <div class="grid">
+        <div class="product-card">
+          <div class="product-image">
+            <i class="fas fa-solar-panel"></i>
+          </div>
+          <div class="product-content">
+            <h3>Solar Panels</h3>
+            <p>High-efficiency solar panels suitable for Zimbabwean conditions.</p>
+            <div class="product-price">Price on request</div>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-image">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <div class="product-content">
+            <h3>Inverters</h3>
+            <p>Pure sine wave and hybrid inverters.</p>
+            <div class="product-price">Price on request</div>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-image">
+            <i class="fas fa-car-battery"></i>
+          </div>
+          <div class="product-content">
+            <h3>Batteries</h3>
+            <p>Lithium and gel batteries for reliable energy storage.</p>
+            <div class="product-price">Price on request</div>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-image">
+            <i class="fas fa-plug"></i>
+          </div>
+          <div class="product-content">
+            <h3>Electrical & Control Accessories</h3>
+            <p>Cables, breakers, controllers, sensors, and automation components.</p>
+            <div class="product-price">Price on request</div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="card">
-      <h3>PLC Installation & Programming</h3>
-      <p>PLC wiring, installation, programming, commissioning, and troubleshooting.</p>
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact Us</h2>
+      </div>
+      
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <div>
+              <h3>Phone / WhatsApp</h3>
+              <p>0772745518</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <h3>Email</h3>
+              <p>engrep20@gmail.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <h3>Service Area</h3>
+              <p>Nationwide (Zimbabwe)</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div>
+              <h3>Business Hours</h3>
+              <p>Mon - Sat: 8:00 AM - 6:00 PM</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-box">
+          <h3>Get In Touch</h3>
+          <p>Ready to power your home or business with solar? Need automation solutions? Contact us today for a free consultation and quote.</p>
+          
+          <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem;">
+            <a class="btn" href="https://wa.me/263772745518">
+              <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a class="btn btn-accent" href="tel:0772745518">
+              <i class="fas fa-phone-alt"></i> Call Now
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<section id="products">
-  <h2>Product Catalog</h2>
-  <div class="grid">
-
-    <div class="card">
-      <h3>Solar Panels</h3>
-      <p>High-efficiency solar panels suitable for Zimbabwean conditions.</p>
-      <p><em>Price on request</em></p>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h2>Ibgwe Industries</h2>
+          <p>Your trusted partner for solar and engineering solutions in Zimbabwe.</p>
+          <div class="social-icons">
+            <a href="#" class="social-icon">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-contact">
+          <h3>Contact Info</h3>
+          <p><i class="fas fa-phone-alt"></i> 0772745518</p>
+          <p><i class="fas fa-envelope"></i> engrep20@gmail.com</p>
+          <p><i class="fas fa-map-marker-alt"></i> Mvuma, Zimbabwe</p>
+          <p><i class="fas fa-globe"></i> Nationwide Service</p>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2026 Ibgwe Industries. All rights reserved.</p>
+      </div>
     </div>
+  </footer>
 
-    <div class="card">
-      <h3>Inverters</h3>
-      <p>Pure sine wave and hybrid inverters.</p>
-      <p><em>Price on request</em></p>
-    </div>
-
-    <div class="card">
-      <h3>Batteries</h3>
-      <p>Lithium and gel batteries for reliable energy storage.</p>
-      <p><em>Price on request</em></p>
-    </div>
-
-    <div class="card">
-      <h3>Electrical & Control Accessories</h3>
-      <p>Cables, breakers, controllers, sensors, and automation components.</p>
-      <p><em>Price on request</em></p>
-    </div>
-
-  </div>
-</section>
-
-<section id="contact">
-  <h2>Contact Us</h2>
-  <div class="contact-box">
-    <p><strong>Phone / WhatsApp:</strong> 0772745518</p>
-    <p><strong>Email:</strong> engrep20@gmail.com</p>
-    <p><strong>Service Area:</strong> Nationwide (Zimbabwe)</p>
-    <a class="btn" href="https://wa.me/263772745518">Chat on WhatsApp</a>
-  </div>
-</section>
-
-<footer>
-  <p>&copy; 2026 Ibgwe Industries. All rights reserved.</p>
-</footer>
-
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Add scroll animation to cards
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+        }
+      });
+    }, observerOptions);
+    
+    // Observe cards for animation
+    document.querySelectorAll('.card, .product-card').forEach(card => {
+      card.style.opacity = '0';
+      observer.observe(card);
+    });
+  </script>
 </body>
 </html>
